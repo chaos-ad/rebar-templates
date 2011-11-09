@@ -38,7 +38,7 @@ If you want to create a new application, you can do the following:
 <code>
 mkdir mysample && cd mysample
 wget http://hg.basho.com/rebar/downloads/rebar && chmod u+x rebar
-./rebar create template=myproject name=mysample
-./rebar create template=myapp name=mysample description="sample application"
+./rebar create template=myproject name=mysample skip_deps=true
+./rebar create template=myapp name=mysample description="sample application" skip_deps=true
 </code>
 </pre>
