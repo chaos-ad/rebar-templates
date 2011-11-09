@@ -6,7 +6,7 @@
 {file, "myproject/Makefile",        "Makefile"}.
 {file, "myproject/gitignore",       ".gitignore"}.
 {file, "myproject/rebar.config",    "rebar.config"}.
-{file, "myproject/app.config",      "priv/app.config"}.
+{template, "myproject/app.config",      "priv/app.config"}.
 
 {template, "myproject/stop-daemon.sh",  "stop-daemon.sh"}.
 {template, "myproject/start-daemon.sh", "start-daemon.sh"}.
