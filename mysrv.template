@@ -1,0 +1,5 @@
+{variables, [
+  {name, "myserver"},
+  {app_dir, "."}
+]}.
+{template, "finsrv.erl", "src/{{name}}_srv.erl"}.

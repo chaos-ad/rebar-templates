@@ -1,70 +1,25 @@
-ERL					?= erl
-ERLC				= erlc
-EBIN_DIRS		:= $(wildcard deps/*/ebin)
-APPS				:= $(shell dir apps)
-REL_DIR     = rel
-NODE				= {{name}}
-REL					= {{name}}
-SCRIPT_PATH  := $(REL_DIR)/$(NODE)/bin/$(REL)
+all: compile
 
-.PHONY: rel deps
+get-deps:
+	./rebar get-deps
 
-all: deps compile
+compile: get-deps
+	./rebar compile
 
-compile: deps
-	@rebar compile
-
-deps:
-	@rebar get-deps
-	@rebar check-deps
+app:
+	./rebar compile skip_deps=true
 
 clean:
-	@rebar clean
+	./rebar clean
+	rm -rfv erl_crash.dump
 
-realclean: clean
-	@rebar delete-deps
+clean-app:
+	${REBAR} clean skip_deps=true
+	rm -rfv erl_crash.dump
 
-test:
-	@rebar skip_deps=true ct
+distclean: clean
+	rm -rfv ebin deps
 
-rel: deps
-	@rebar compile generate
+release:
+	./rebar generate
 
-start: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) start
-
-stop: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) stop
-
-ping: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) ping
-
-attach: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) attach
-
-console: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) console
-
-restart: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) restart
-
-reboot: $(SCRIPT_PATH)
-	@./$(SCRIPT_PATH) reboot
-
-doc:
-	rebar skip_deps=true doc
-	for app in $(APPS); do \
-		cp -R apps/$${app}/doc doc/$${app}; \
-	done;
-
-dev:
-	@erl -pa ebin include deps/*/ebin deps/*/include ebin include -boot start_sasl
-
-analyze: checkplt
-	@rebar skip_deps=true dialyze
-
-buildplt:
-	@rebar skip_deps=true build-plt
-
-checkplt: buildplt
-	@rebar skip_deps=true check-plt

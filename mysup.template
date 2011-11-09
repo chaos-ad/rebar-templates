@@ -1,0 +1,6 @@
+{variables, [
+  {name, "supname"}, 
+  {app_dir, "."}
+]}.
+{dir, "{{app_dir}}/src"}.
+{template, "mysup.erl", "{{app_dir}}/src/{{name}}_sup.erl"}.

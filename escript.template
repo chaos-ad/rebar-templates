@@ -1,9 +1,0 @@
-{variables, [
-  {name, "escriptname"}, 
-  {copyright_year, "2011"},
-  {author_name, "Susan Potter"},
-  {author_email,"me@susanpotter.net"}
-]}.
-{dir, "bin"}.
-{template, "escript", "bin/{{name}}"}.
-{chmod, 8#00770, "bin/{{name}}"}.
