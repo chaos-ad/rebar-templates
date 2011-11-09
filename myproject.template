@@ -1,5 +1,5 @@
 {variables, [
-  {name, "myproject"}
+  {name, "appname"}
 ]}.
 {dir, "src"}.
 {dir, "priv"}.

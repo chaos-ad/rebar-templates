@@ -1,5 +1,6 @@
 {variables, [
   {name, "appname"}, 
+  {description, ""},
   {app_dir, "."}
 ]}.
 {dir, "{{app_dir}}/src"}.
