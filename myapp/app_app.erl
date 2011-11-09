@@ -8,7 +8,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 start(_StartType, _StartArgs) ->
-    trade_sup:start_link().
+    {{name}}_sup:start_link().
 
 stop(_State) ->
     ok.

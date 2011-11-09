@@ -3,11 +3,15 @@
 ]}.
 {dir, "src"}.
 {dir, "priv"}.
-{dir, "scripts"}.
 {file, "myproject/Makefile",        "Makefile"}.
 {file, "myproject/gitignore",       ".gitignore"}.
 {file, "myproject/rebar.config",    "rebar.config"}.
 {file, "myproject/app.config",      "priv/app.config"}.
-{file, "myproject/stop-daemon.sh",  "scripts/stop-daemon.sh"}.
-{file, "myproject/start-daemon.sh", "scripts/start-daemon.sh"}.
-{file, "myproject/start-normal.sh", "scripts/start-normal.sh"}.
+
+{template, "myproject/stop-daemon.sh",  "stop-daemon.sh"}.
+{template, "myproject/start-daemon.sh", "start-daemon.sh"}.
+{template, "myproject/start-normal.sh", "start-normal.sh"}.
+
+{chmod, 493, "stop-daemon.sh"}.
+{chmod, 493, "start-daemon.sh"}.
+{chmod, 493, "start-normal.sh"}.
