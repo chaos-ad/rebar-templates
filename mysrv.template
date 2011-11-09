@@ -2,4 +2,4 @@
   {name, "myserver"},
   {app_dir, "."}
 ]}.
-{template, "finsrv.erl", "src/{{name}}_srv.erl"}.
+{template, "mysrv/srv.erl", "src/{{name}}_srv.erl"}.

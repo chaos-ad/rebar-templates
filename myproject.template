@@ -2,6 +2,12 @@
   {name, "myproject"}
 ]}.
 {dir, "src"}.
-{file, "myproject_Makefile", "Makefile"}.
-{file, "myproject_gitignore", ".gitignore"}.
-{file, "myproject_rebar.config", "rebar.config"}.
+{dir, "priv"}.
+{dir, "scripts"}.
+{file, "myproject/Makefile",        "Makefile"}.
+{file, "myproject/gitignore",       ".gitignore"}.
+{file, "myproject/rebar.config",    "rebar.config"}.
+{file, "myproject/app.config",      "priv/app.config"}.
+{file, "myproject/stop-daemon.sh",  "scripts/stop-daemon.sh"}.
+{file, "myproject/start-daemon.sh", "scripts/start-daemon.sh"}.
+{file, "myproject/start-normal.sh", "scripts/start-normal.sh"}.
