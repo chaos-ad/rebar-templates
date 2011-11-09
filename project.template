@@ -1,7 +1,0 @@
-{variables, [
-  {name, "myproject"}
-]}.
-{dir, "src"}.
-{file, "project_Makefile", "Makefile"}.
-{file, "project_gitignore", ".gitignore"}.
-{file, "project_rebar.config", "rebar.config"}.

@@ -1,0 +1,7 @@
+{variables, [
+  {name, "myproject"}
+]}.
+{dir, "src"}.
+{file, "myproject_Makefile", "Makefile"}.
+{file, "myproject_gitignore", ".gitignore"}.
+{file, "myproject_rebar.config", "rebar.config"}.
