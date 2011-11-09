@@ -2,7 +2,7 @@ h1. Rebar Templates
 
 h2. Overview
 
-The fork of useful templates from git@github.com:chaos-ad/rebar-templates.git
+The fork of useful templates from <code>git@github.com:chaos-ad/rebar-templates.git</code>
 
 Contains the following templates:
 * simple rebar project layout
