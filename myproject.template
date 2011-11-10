@@ -8,9 +8,9 @@
 {file, "myproject/rebar.config",    "rebar.config"}.
 {template, "myproject/app.config",      "priv/app.config"}.
 
+{template, "myproject/start.sh",        "start.sh"}.
 {template, "myproject/stop-daemon.sh",  "stop-daemon.sh"}.
 {template, "myproject/start-daemon.sh", "start-daemon.sh"}.
-{template, "myproject/start-normal.sh", "start-normal.sh"}.
 
 {chmod, 493, "stop-daemon.sh"}.
 {chmod, 493, "start-daemon.sh"}.
