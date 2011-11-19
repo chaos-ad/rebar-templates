@@ -1,0 +1,5 @@
+{variables, [
+  {name, "server"},
+  {app_dir, "."}
+]}.
+{template, "srv/srv.erl", "src/{{name}}.erl"}.

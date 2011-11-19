@@ -3,4 +3,4 @@
   {app_dir, "."}
 ]}.
 {dir, "{{app_dir}}/src"}.
-{template, "mysup/sup.erl", "{{app_dir}}/src/{{name}}_sup.erl"}.
+{template, "sup/sup.erl", "{{app_dir}}/src/{{name}}.erl"}.

@@ -1,5 +1,0 @@
-{variables, [
-  {name, "myserver"},
-  {app_dir, "."}
-]}.
-{template, "mysrv/srv.erl", "src/{{name}}_srv.erl"}.

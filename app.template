@@ -1,0 +1,10 @@
+{variables, [
+  {name, "appname"}, 
+  {description, ""},
+  {app_dir, "."}
+]}.
+{dir, "{{app_dir}}/src"}.
+{template, "app/app.erl",     "{{app_dir}}/src/{{name}}.erl"}.
+{template, "app/app.app.src", "{{app_dir}}/src/{{name}}.app.src"}.
+{template, "app/app_app.erl", "{{app_dir}}/src/{{name}}_app.erl"}.
+{template, "app/app_sup.erl", "{{app_dir}}/src/{{name}}_sup.erl"}.
