@@ -30,7 +30,7 @@ init([]) ->
     {ok, undefined}.
 
 handle_call({stop, Reason}, _, State) ->
-    {stop, ok, Reason, State};
+    {stop, Reason, ok, State};
 
 handle_call(_, _, State) ->
     {noreply, ok, State}.
