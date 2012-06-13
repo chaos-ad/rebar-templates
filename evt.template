@@ -1,0 +1,6 @@
+{variables, [
+  {name, "server"},
+  {app_dir, "."}
+]}.
+{template, "evt/evt.erl", "src/{{name}}.erl"}.
+
