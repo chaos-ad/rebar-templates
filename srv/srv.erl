@@ -7,7 +7,7 @@
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, terminate/2, code_change/3]).
 
 %% api:
--export([start_link/0, stop/0, stop/1]).
+-export([start_link/0]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -18,19 +18,10 @@
 start_link() ->
     gen_server:start_link({global, ?MODULE}, ?MODULE, [], []).
 
-stop() ->
-    stop(normal).
-
-stop(Reason) ->
-    gen_server:call(?SERVER, {stop, Reason}).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 init([]) ->
     {ok, undefined}.
-
-handle_call({stop, Reason}, _, State) ->
-    {stop, Reason, ok, State};
 
 handle_call(_, _, State) ->
     {noreply, ok, State}.
