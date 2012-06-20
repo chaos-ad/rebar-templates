@@ -24,7 +24,7 @@ init([]) ->
     {ok, undefined}.
 
 handle_call(_, _, State) ->
-    {noreply, ok, State}.
+    {reply, ok, State}.
 
 handle_cast(_, State) ->
     {noreply, State}.
