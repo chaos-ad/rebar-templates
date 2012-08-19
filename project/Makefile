@@ -1,25 +1,30 @@
+APP={{name}}
+REBAR ?= $(shell which rebar 2>/dev/null || which ./rebar)
+
+.PHONY: test
+
 all: compile
 
 get-deps:
-	./rebar get-deps
+	$(REBAR) get-deps
 
 compile: get-deps
-	./rebar compile
+	$(REBAR) compile
 
 app:
-	./rebar compile skip_deps=true
+	$(REBAR) compile skip_deps=true
 
 clean:
-	./rebar clean
+	$(REBAR) clean
 	rm -rfv erl_crash.dump
 
 clean-app:
-	${REBAR} clean skip_deps=true
+	$(REBAR) clean skip_deps=true
 	rm -rfv erl_crash.dump
 
 distclean: clean
-	rm -rfv ebin deps
+	rm -rfv ebin deps priv/logs
 
-release:
-	./rebar generate
+start:
+	exec erl -pa ebin deps/*/ebin -boot start_sasl -config priv/app.config -s $(APP)
 
