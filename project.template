@@ -1,9 +1,34 @@
 {variables, [
-  {name, "appname"}
+  {name, "appname"},
+  {description, ""},
+  {app_dir, "."}
 ]}.
-{dir, "src"}.
-{dir, "priv"}.
-{file, "project/gitignore",       ".gitignore"}.
-{file, "project/rebar.config",    "rebar.config"}.
-{template, "project/Makefile",    "Makefile"}.
-{template, "project/app.config",  "priv/app.config"}.
+
+{dir, "{{app_dir}}"}.
+{dir, "{{app_dir}}/src"}.
+{dir, "{{app_dir}}/rel"}.
+{dir, "{{app_dir}}/rel/files"}.
+{dir, "{{app_dir}}/priv"}.
+
+{template, "project/gitignore",         ".gitignore"}.
+{template, "project/rebar.config",      "rebar.config"}.
+{template, "project/Makefile",          "Makefile"}.
+{template, "project/priv/app.config",   "{{app_dir}}/priv/app.config"}.
+{template, "project/src/app.erl",       "{{app_dir}}/src/{{name}}.erl"}.
+{template, "project/src/app.app.src",   "{{app_dir}}/src/{{name}}.app.src"}.
+{template, "project/src/app_app.erl",   "{{app_dir}}/src/{{name}}_app.erl"}.
+{template, "project/src/app_sup.erl",   "{{app_dir}}/src/{{name}}_sup.erl"}.
+
+{template, "project/rel/reltool.config",                 "{{app_dir}}/rel/reltool.config"}.
+{template, "project/rel/files/app.config",               "{{app_dir}}/rel/files/app.config"}.
+{template, "project/rel/files/vm.args",                  "{{app_dir}}/rel/files/vm.args"}.
+{template, "project/rel/files/app.cmd",                  "{{app_dir}}/rel/files/{{name}}.cmd"}.
+{template, "project/rel/files/app",                      "{{app_dir}}/rel/files/{{name}}"}.
+{template, "project/rel/files/erl",                      "{{app_dir}}/rel/files/erl"}.
+{template, "project/rel/files/install_upgrade.escript",  "{{app_dir}}/rel/files/install_upgrade.escript"}.
+{template, "project/rel/files/nodetool",                 "{{app_dir}}/rel/files/nodetool"}.
+{template, "project/rel/files/start_erl.cmd",            "{{app_dir}}/rel/files/start_erl.cmd"}.
+
+{chmod, 493, "{{app_dir}}/rel/files/erl"}.
+{chmod, 493, "{{app_dir}}/rel/files/{{name}}"}.
+{chmod, 493, "{{app_dir}}/rel/files/nodetool"}.

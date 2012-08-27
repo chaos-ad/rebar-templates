@@ -23,8 +23,26 @@ clean-app:
 	rm -rfv erl_crash.dump
 
 distclean: clean
-	rm -rfv ebin deps priv/logs
+	rm -rfv ebin deps logs
 
 start:
 	exec erl -pa ebin deps/*/ebin -boot start_sasl -config priv/app.config -s $(APP)
 
+test:
+	mkdir -p .eunit
+	$(REBAR) eunit skip_deps=true -v || true
+
+dialyzer:
+	dialyzer ebin deps/*/ebin -Wrace_conditions -Wunderspecs -Werror_handling
+
+release:
+	mkdir -p /tmp/release_builder/ && \
+	rm -rfv /tmp/release_builder/$(APP) && \
+	ln -sf $(PWD) /tmp/release_builder/$(APP) && \
+	$(REBAR) generate && \
+	rm -rfv /tmp/release_builder/$(APP)
+
+relclean:
+	rm -rfv rel/$(APP)
+
+ci: compile test
