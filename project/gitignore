@@ -1,8 +1,8 @@
-*.kdev4
 ebin
 deps
-erl_crash.dump
+logs
+erl_crash.dumpa
 .eunit
 .*.swp
-logs
+*.kdev4
 /rel/{{name}}
