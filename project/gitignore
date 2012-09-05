@@ -1,7 +1,7 @@
 ebin
 deps
 logs
-erl_crash.dumpa
+erl_crash.dump
 .eunit
 .*.swp
 *.kdev4
