@@ -36,11 +36,15 @@ dialyzer:
 	dialyzer ebin deps/*/ebin -Wrace_conditions -Wunderspecs -Werror_handling
 
 release:
-	mkdir -p /tmp/release_builder/ && \
-	rm -rfv /tmp/release_builder/$(APP) && \
-	ln -sf $(PWD) /tmp/release_builder/$(APP) && \
-	$(REBAR) generate && \
-	rm -rfv /tmp/release_builder/$(APP)
+	@mkdir -p /tmp/release_builder/
+	@rm -rf /tmp/release_builder/$(APP)
+	@ln -sf $(PWD) /tmp/release_builder/$(APP)
+	$(REBAR) generate
+	@rm -rf /tmp/release_builder/$(APP)
+
+install:
+	@sudo mkdir -p /opt/$(APP)
+	@sudo cp -rf rel/$(APP) /opt/$(APP)/$(APP)
 
 relclean:
 	rm -rfv rel/$(APP)
