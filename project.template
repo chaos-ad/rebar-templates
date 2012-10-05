@@ -13,7 +13,6 @@
 {template, "project/gitignore",         ".gitignore"}.
 {template, "project/rebar.config",      "rebar.config"}.
 {template, "project/Makefile",          "Makefile"}.
-{template, "project/priv/app.config",   "{{app_dir}}/priv/app.config"}.
 {template, "project/src/app.erl",       "{{app_dir}}/src/{{name}}.erl"}.
 {template, "project/src/app.app.src",   "{{app_dir}}/src/{{name}}.app.src"}.
 {template, "project/src/app_app.erl",   "{{app_dir}}/src/{{name}}_app.erl"}.
@@ -21,6 +20,7 @@
 
 {template, "project/rel/reltool.config",                 "{{app_dir}}/rel/reltool.config"}.
 {template, "project/rel/files/app.config",               "{{app_dir}}/rel/files/app.config"}.
+{symlink,  "../rel/files/app.config",                    "{{app_dir}}/priv/app.config"}.
 {template, "project/rel/files/vm.args",                  "{{app_dir}}/rel/files/vm.args"}.
 {template, "project/rel/files/app.cmd",                  "{{app_dir}}/rel/files/{{name}}.cmd"}.
 {template, "project/rel/files/app",                      "{{app_dir}}/rel/files/{{name}}"}.

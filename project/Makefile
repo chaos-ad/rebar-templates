@@ -5,10 +5,10 @@ REBAR ?= $(shell which rebar 2>/dev/null || which ./rebar)
 
 all: compile
 
-get-deps:
+getdeps:
 	$(REBAR) get-deps
 
-compile: get-deps
+compile: getdeps
 	$(REBAR) compile
 
 app:
@@ -16,33 +16,43 @@ app:
 
 clean:
 	$(REBAR) clean
-	rm -rfv erl_crash.dump
+	@rm -rf erl_crash.dump
 
 clean-app:
 	$(REBAR) clean skip_deps=true
-	rm -rfv erl_crash.dump
+	@rm -rf erl_crash.dump
 
 distclean: clean
-	rm -rfv ebin deps logs
+	@rm -rf ebin deps logs
 
 start:
 	exec erl -pa ebin deps/*/ebin -boot start_sasl -config priv/app.config -s $(APP)
 
 test:
-	mkdir -p .eunit
+	@mkdir -p .eunit
 	$(REBAR) eunit skip_deps=true -v || true
 
 dialyzer:
 	dialyzer ebin deps/*/ebin -Wrace_conditions -Wunderspecs -Werror_handling
 
 release:
-	mkdir -p /tmp/release_builder/ && \
-	rm -rfv /tmp/release_builder/$(APP) && \
-	ln -sf $(PWD) /tmp/release_builder/$(APP) && \
-	$(REBAR) generate && \
-	rm -rfv /tmp/release_builder/$(APP)
+	@mkdir -p /tmp/release_builder
+	@rm -rf /tmp/release_builder/$(APP)
+	@ln -sf $(PWD) /tmp/release_builder/$(APP)
+	$(REBAR) generate force=1
+	@rm -rf /tmp/release_builder/$(APP)
 
 relclean:
-	rm -rfv rel/$(APP)
+	@rm -rf rel/$(APP)
 
 ci: compile test
+
+tag:
+	@echo "Current version: $(TAG)" > DOC/CHANGELOG
+	@git log --decorate  |\
+         grep -E '(^ +(DOC|FIX|OPT|CHANGE|NEW|SEC|CHANGE|PERF))|tag:' |\
+         sed 's/commit [0-9a-f]* (.*tag: \([0-9.]*\).*).*/\ntag: \1/'\
+         >> DOC/CHANGELOG
+	@git add DOC/CHANGELOG
+	@git commit -m "--" DOC/CHANGELOG
+	@git tag $(TAG)
