@@ -45,6 +45,18 @@ release:
 relclean:
 	@rm -rf rel/$(APP)
 
+install:
+	sudo rm -rf /opt/$(APP)
+	sudo cp -rf rel/$(APP) /opt/$(APP)
+	sudo chmod 644 /opt/$(APP)/logs
+	sudo mkdir -p /opt/$(APP)/priv/
+	sudo mkdir -p /etc/$(APP)/
+	sudo touch /etc/$(APP)/app.config
+	sudo ln -s /etc/$(APP)/app.config /opt/$(APP)/priv/extra.config
+	
+remove:
+	sudo rm -rf /opt/$(APP)
+
 ci: compile test
 
 tag:
