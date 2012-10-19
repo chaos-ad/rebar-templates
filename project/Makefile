@@ -53,8 +53,9 @@ install:
 	sudo mkdir -p /etc/$(APP)/
 	sudo touch /etc/$(APP)/app.config
 	sudo ln -s /etc/$(APP)/app.config /opt/$(APP)/priv/extra.config
-	
-remove:
+
+uninstall:
+	sudo /opt/$(APP)/bin/$(APP) stop
 	sudo rm -rf /opt/$(APP)
 
 ci: compile test
