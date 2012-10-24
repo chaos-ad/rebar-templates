@@ -1,6 +1,6 @@
 {application, {{name}}, [
     {description, "{{description}}"},
-    {vsn, "git"},
+    {vsn, git},
     {registered, []},
     {applications, [
         kernel,
