@@ -26,7 +26,10 @@ distclean: clean
 	@rm -rf ebin deps logs
 
 start:
-	exec erl -pa ebin deps/*/ebin -boot start_sasl -config priv/app.config -s $(APP)
+	exec erl -pa ebin deps/*/ebin -boot start_sasl \
+		-config priv/app.config \
+		-config priv/extra.config \
+		-setcookie $(APP) -s $(APP)
 
 test:
 	@mkdir -p .eunit
@@ -44,20 +47,7 @@ release:
 
 relclean:
 	@rm -rf rel/$(APP)
-
-install:
-	sudo rm -rf /opt/$(APP)
-	sudo cp -rf rel/$(APP) /opt/$(APP)
-	sudo chmod 644 /opt/$(APP)/logs
-	sudo mkdir -p /opt/$(APP)/priv/
-	sudo mkdir -p /etc/$(APP)/
-	sudo touch /etc/$(APP)/app.config
-	sudo ln -s /etc/$(APP)/app.config /opt/$(APP)/priv/extra.config
-
-uninstall:
-	sudo /opt/$(APP)/bin/$(APP) stop
-	sudo rm -rf /opt/$(APP)
-
+	
 ci: compile test
 
 tag:

@@ -18,10 +18,14 @@
 {template, "project/src/app_app.erl",   "{{app_dir}}/src/{{name}}_app.erl"}.
 {template, "project/src/app_sup.erl",   "{{app_dir}}/src/{{name}}_sup.erl"}.
 
+{template, "project/rel/vars.config",                    "{{app_dir}}/rel/vars.config"}.
 {template, "project/rel/reltool.config",                 "{{app_dir}}/rel/reltool.config"}.
-{template, "project/rel/files/app.config",               "{{app_dir}}/rel/files/app.config"}.
-{symlink,  "../rel/files/app.config",                    "{{app_dir}}/priv/app.config"}.
-{template, "project/rel/files/vm.args",                  "{{app_dir}}/rel/files/vm.args"}.
+{template, "project/rel/files/conf/app.config",          "{{app_dir}}/rel/files/conf/app.config"}.
+{template, "project/rel/files/conf/extra.config",        "{{app_dir}}/rel/files/conf/extra.config"}.
+{file,     "project/rel/files/conf/sys.config",          "{{app_dir}}/rel/files/conf/sys.config"}.
+{symlink,  "../rel/files/conf/app.config",               "{{app_dir}}/priv/app.config"}.
+{symlink,  "../rel/files/conf/extra.config",             "{{app_dir}}/priv/extra.config"}.
+{file,     "project/rel/files/vm.args",                  "{{app_dir}}/rel/files/vm.args"}.
 {template, "project/rel/files/app.cmd",                  "{{app_dir}}/rel/files/{{name}}.cmd"}.
 {template, "project/rel/files/app",                      "{{app_dir}}/rel/files/{{name}}"}.
 {template, "project/rel/files/erl",                      "{{app_dir}}/rel/files/erl"}.
