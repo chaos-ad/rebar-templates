@@ -29,7 +29,8 @@ start:
 	exec erl -pa ebin deps/*/ebin -boot start_sasl \
 		-config priv/app.config \
 		-config priv/extra.config \
-		-setcookie $(APP) -s $(APP)
+		-name $(APP) -setcookie $(APP) \
+		-s $(APP)
 
 test:
 	@mkdir -p .eunit
