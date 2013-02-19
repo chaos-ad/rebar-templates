@@ -1,0 +1,5 @@
+{variables, [
+  {name, "something"},
+  {app_dir, "."}
+]}.
+{template, "fsm/fsm.erl", "src/{{name}}.erl"}.
