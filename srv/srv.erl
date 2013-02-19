@@ -21,19 +21,23 @@ start_link() ->
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 init([]) ->
+    lager:debug("{{name}} started: ~p", [self()]),
     {ok, #state{}}.
 
-handle_call(_, _, State) ->
+handle_call(_Call, _, State) ->
+    lager:warning("Unhandled call: ~p", [_Call]),
     {reply, ok, State}.
 
-handle_cast(_, State) ->
+handle_cast(_Cast, State) ->
+    lager:warning("Unhandled cast: ~p", [_Cast]),
     {noreply, State}.
 
-handle_info(_, State) ->
+handle_info(_Info, State) ->
+    lager:warning("Unhandled info: ~p", [_Info]),
     {noreply, State}.
 
-terminate(_, _) ->
-    ok.
+terminate(_Reason, _) ->
+    lager:debug("{{name}} terminated: ~p", [_Reason]).
 
 code_change(_, State, _) ->
     {ok, State}.
