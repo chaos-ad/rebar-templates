@@ -1,0 +1,6 @@
+{variables, [
+  {name, "the"},
+  {app_dir, "."}
+]}.
+{template, "reloader/reloader.erl", "src/{{name}}_reloader.erl"}.
+
