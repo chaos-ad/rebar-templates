@@ -20,7 +20,7 @@ start_link() ->
     gen_fsm:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 init([]) ->
-    lager:debug("~p started: ~p", [?MODULE, self()]),
+    lager:debug("~p: started as ~p", [?MODULE, self()]),
     {ok, state_name, #state{}}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,7 +48,7 @@ handle_info(_Info, StateName, State) ->
     {next_state, StateName, State}.
 
 terminate(_Reason, _, _) ->
-    lager:debug("~p terminated: ~p", [?MODULE, _Reason]).
+    lager:debug("~p: terminated with reason ~p", [?MODULE, _Reason]).
 
 
 code_change(_, StateName, State, _) ->

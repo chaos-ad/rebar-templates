@@ -21,7 +21,7 @@ start_link() ->
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 init([]) ->
-    lager:debug("~p started: ~p", [?MODULE, self()]),
+    lager:debug("~p: started as ~p", [?MODULE, self()]),
     {ok, #state{}}.
 
 handle_call(_Call, _, State) ->
@@ -37,7 +37,7 @@ handle_info(_Info, State) ->
     {noreply, State}.
 
 terminate(_Reason, _) ->
-    lager:debug("~p: terminated: ~p", [?MODULE, _Reason]).
+    lager:debug("~p: terminated with reason ~p", [?MODULE, _Reason]).
 
 code_change(_, State, _) ->
     {ok, State}.
