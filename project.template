@@ -10,6 +10,7 @@
 {dir, "{{app_dir}}/rel/files"}.
 {dir, "{{app_dir}}/priv"}.
 
+{file,     "project/rebar",                "rebar"}.
 {template, "project/gitignore",            ".gitignore"}.
 {template, "project/rebar.config",         "rebar.config"}.
 {template, "project/Makefile",             "Makefile"}.
