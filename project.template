@@ -10,13 +10,14 @@
 {dir, "{{app_dir}}/rel/files"}.
 {dir, "{{app_dir}}/priv"}.
 
-{template, "project/gitignore",         ".gitignore"}.
-{template, "project/rebar.config",      "rebar.config"}.
-{template, "project/Makefile",          "Makefile"}.
-{template, "project/src/app.erl",       "{{app_dir}}/src/{{name}}.erl"}.
-{template, "project/src/app.app.src",   "{{app_dir}}/src/{{name}}.app.src"}.
-{template, "project/src/app_app.erl",   "{{app_dir}}/src/{{name}}_app.erl"}.
-{template, "project/src/app_sup.erl",   "{{app_dir}}/src/{{name}}_sup.erl"}.
+{template, "project/gitignore",            ".gitignore"}.
+{template, "project/rebar.config",         "rebar.config"}.
+{template, "project/Makefile",             "Makefile"}.
+{template, "project/src/app.erl",          "{{app_dir}}/src/{{name}}.erl"}.
+{template, "project/src/app.app.src",      "{{app_dir}}/src/{{name}}.app.src"}.
+{template, "project/src/app_app.erl",      "{{app_dir}}/src/{{name}}_app.erl"}.
+{template, "project/src/app_sup.erl",      "{{app_dir}}/src/{{name}}_sup.erl"}.
+{template, "project/src/app_reloader.erl", "{{app_dir}}/src/{{name}}_reloader.erl"}.
 
 {template, "project/rel/vars.config",                    "{{app_dir}}/rel/vars.config"}.
 {template, "project/rel/reltool.config",                 "{{app_dir}}/rel/reltool.config"}.

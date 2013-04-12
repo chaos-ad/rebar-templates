@@ -30,6 +30,7 @@ start:
 		-config priv/app.config \
 		-config priv/extra.config \
 		-name $(APP) -setcookie $(APP) \
+		-s $(APP)_reloader \
 		-s $(APP)
 
 test:
